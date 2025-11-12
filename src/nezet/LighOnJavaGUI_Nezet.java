@@ -10,6 +10,7 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
      */
     public LighOnJavaGUI_Nezet() {
         initComponents();
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }
 
     /**

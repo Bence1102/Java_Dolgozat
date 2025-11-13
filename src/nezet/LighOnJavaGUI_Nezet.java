@@ -1,7 +1,14 @@
 
 package nezet;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
 
@@ -9,8 +16,93 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
     public LighOnJavaGUI_Nezet() {
         initComponents();
         
+    }   
+
+    public JButton getjButton11() {
+        return jButton11;
     }
 
+    public JButton getjButton12() {
+        return jButton12;
+    }
+
+    public JButton getjButton13() {
+        return jButton13;
+    }
+
+    public JButton getjButton14() {
+        return jButton14;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public JButton getBtnindit() {
+        return btnindit;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public JMenuItem getjMenuItem1() {
+        return jMenuItem1;
+    }
+
+    public JMenuItem getjMenuItem2() {
+        return jMenuItem2;
+    }
+
+    public JMenuItem getjMenuItem3() {
+        return jMenuItem3;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public JLabel getLbljatekosnev() {
+        return lbljatekosnev;
+    }
+
+    public JLabel getLbljatekosnyert() {
+        return lbljatekosnyert;
+    }
+
+    public JTextField getTxtjateknyertes() {
+        return txtjateknyertes;
+    }
+
+    public JTextField getTxtjatekosnev() {
+        return txtjatekosnev;
+    }
+    
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -8,7 +8,7 @@ public class LightOnJatekModell {
         jatekter= new boolean[3][3];
     }
     
-    private void kapcsolo(int sorok, int oszlopok){
+    public void kapcsolo(int sorok, int oszlopok){
         csere(sorok,oszlopok);
         if (sorok > 0) csere (sorok -1,oszlopok);
         if (sorok < 2) csere (sorok+1,oszlopok);

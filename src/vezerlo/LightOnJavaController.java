@@ -239,7 +239,7 @@ public class LightOnJavaController {
     private String tartalom() {
         StringBuilder sb = new StringBuilder();
         sb.append(nezet.getTxtjatekosnev().getText()).append("\n");
-        sb.append("0").append("\n"); // lépések, ha szükséges
+        sb.append("0").append("\n");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 sb.append(model.getErtek(i, j) ? "1" : "0");

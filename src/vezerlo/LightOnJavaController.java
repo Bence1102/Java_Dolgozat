@@ -4,7 +4,12 @@ package vezerlo;
 import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import nezet.LighOnJavaGUI_Nezet;
 import modell.LightOnJatekModell;
@@ -55,6 +60,11 @@ public class LightOnJavaController {
             @Override public void windowActivated(WindowEvent e) {}
             @Override public void windowDeactivated(WindowEvent e) {}
         });
+        
+        nezet.getMentesmenu().addActionListener(e -> mentes());
+        nezet.getBetoltmenu().addActionListener(e -> betoltes());
+        nezet.getKilepmenu().addActionListener(e -> kilepesMegerosites());
+        
         frissites();
         
     }
@@ -142,6 +152,102 @@ public class LightOnJavaController {
         } catch (Exception e) {
         JOptionPane.showMessageDialog(nezet, "Hiba az új játék indításakor: " + e.getMessage());
         }
+    }
+
+   
+       private void mentes() {
+    String jatekos = nezet.getTxtjatekosnev().getText().trim();
+    if (jatekos.isEmpty()) {
+        JOptionPane.showMessageDialog(nezet, "Nem lehet menteni, add meg a neved!");
+        return;
+    }
+
+    try {
+        String alapHely = System.getProperty("user.dir");
+        JFileChooser jfc = new JFileChooser(alapHely);
+
+        
+        File alapFajl = new File(alapHely + File.separator + jatekos + ".txt");
+        jfc.setSelectedFile(alapFajl);
+
+        int valasztas = jfc.showSaveDialog(nezet);
+        if (valasztas == JFileChooser.APPROVE_OPTION) {
+            File fajl = jfc.getSelectedFile();
+            Path path = fajl.toPath();
+            
+            
+            StringBuilder sb = new StringBuilder();
+            sb.append(jatekos).append("\n"); 
+            sb.append("0").append("\n"); 
+            
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    sb.append(model.getErtek(i, j) ? "1" : "0");
+                    if (j < 2) sb.append(",");
+                }
+                sb.append("\n");
+            }
+
+           
+            Files.writeString(path, sb.toString());
+            JOptionPane.showMessageDialog(nezet, "Mentés kész!");
+        }
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(nezet, "Hiba a mentés során: " + ex.getMessage());
+        ex.printStackTrace();
+    }
+}
+
+
+    private void betoltes() {
+        JFileChooser jfc = new JFileChooser(System.getProperty("user.dir"));
+        int valasztas = jfc.showOpenDialog(nezet);
+
+        if (valasztas == JFileChooser.APPROVE_OPTION) {
+            File fajl = jfc.getSelectedFile();
+            try {
+                var sorok = Files.readAllLines(fajl.toPath());
+                if (sorok.size() < 5) {
+                    JOptionPane.showMessageDialog(nezet, "Érvénytelen mentés!");
+                    return;
+                }
+                nezet.getTxtjatekosnev().setText(sorok.get(0));
+                nezet.getTxtjatekosnev().setEditable(false);
+                nezet.getBtnindit().setEnabled(false);
+   
+                for (int i = 0; i < 3; i++) {
+                    String[] adatok = sorok.get(i + 2).split(",");
+                    for (int j = 0; j < 3; j++) {
+                        boolean allapot = adatok[j].equals("1");
+                        if (allapot != model.getErtek(i, j)) {
+                            model.kapcsolo(i, j);
+                        }
+                    }
+                }             
+                for (int i = 0; i < 3; i++)
+                    for (int j = 0; j < 3; j++)
+                        gomb[i][j].setEnabled(true);
+                frissites();
+                JOptionPane.showMessageDialog(nezet, "Betöltés sikeres!");
+            } catch (IOException | NumberFormatException | IndexOutOfBoundsException ex) {
+                JOptionPane.showMessageDialog(nezet, "Betöltés sikertelen!\n" + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private String tartalom() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(nezet.getTxtjatekosnev().getText()).append("\n");
+        sb.append("0").append("\n"); // lépések, ha szükséges
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                sb.append(model.getErtek(i, j) ? "1" : "0");
+                if (j < 2) sb.append(",");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
 }

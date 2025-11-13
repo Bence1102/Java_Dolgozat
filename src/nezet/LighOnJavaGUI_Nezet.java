@@ -70,16 +70,16 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
         return jMenuBar1;
     }
 
-    public JMenuItem getjMenuItem1() {
-        return jMenuItem1;
+    public JMenuItem getBetoltmenu() {
+        return betoltmenu;
     }
 
-    public JMenuItem getjMenuItem2() {
-        return jMenuItem2;
+    public JMenuItem getKilepmenu() {
+        return kilepmenu;
     }
 
-    public JMenuItem getjMenuItem3() {
-        return jMenuItem3;
+    public JMenuItem getMentesmenu() {
+        return mentesmenu;
     }
 
     public JPanel getjPanel1() {
@@ -131,9 +131,9 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        kilepmenu = new javax.swing.JMenuItem();
+        betoltmenu = new javax.swing.JMenuItem();
+        mentesmenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -249,14 +249,14 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
 
         jMenu1.setText("Kezdőlap");
 
-        jMenuItem1.setText("kilépés");
-        jMenu1.add(jMenuItem1);
+        kilepmenu.setText("kilépés");
+        jMenu1.add(kilepmenu);
 
-        jMenuItem2.setText("Betöltés");
-        jMenu1.add(jMenuItem2);
+        betoltmenu.setText("Betöltés");
+        jMenu1.add(betoltmenu);
 
-        jMenuItem3.setText("Mentés");
-        jMenu1.add(jMenuItem3);
+        mentesmenu.setText("Mentés");
+        jMenu1.add(mentesmenu);
 
         jMenuBar1.add(jMenu1);
 
@@ -293,6 +293,7 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem betoltmenu;
     private javax.swing.JButton btnindit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
@@ -306,13 +307,12 @@ public class LighOnJavaGUI_Nezet extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem kilepmenu;
     private javax.swing.JLabel lbljatekosnev;
     private javax.swing.JLabel lbljatekosnyert;
+    private javax.swing.JMenuItem mentesmenu;
     private javax.swing.JTextField txtjateknyertes;
     private javax.swing.JTextField txtjatekosnev;
     // End of variables declaration//GEN-END:variables

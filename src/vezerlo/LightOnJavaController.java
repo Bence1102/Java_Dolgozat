@@ -24,7 +24,15 @@ public class LightOnJavaController {
             {nezet.getjButton4(), nezet.getjButton5(), nezet.getjButton6()}
         };
         
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                gomb[i][j].setEnabled(false);
+            }
+        }
+        
+        
         nezet.getBtnindit().addActionListener(e->newGame());
+        nezet.getjButton1().addActionListener(e-> ujraindit());
         
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -52,18 +60,27 @@ public class LightOnJavaController {
     }
 
     private void newGame() {
-      try {
-            model.mehet();
-            nezet.getTxtjatekosnev().setText("");
-            nezet.getTxtjateknyertes();
-            nezet.getTxtjatekosnev().setEditable(true);
-            nezet.getBtnindit().setEnabled(true);
-            frissites();
-            JOptionPane.showConfirmDialog(nezet, "Új játék indult");
-      }catch(Exception e){
-          JOptionPane.showMessageDialog(nezet, "Hiba az új játék indításakor: " + e.getMessage());
-      }
-      
+       String jatekos = nezet.getTxtjatekosnev().getText().trim();
+       
+       if (jatekos.isEmpty()) {
+        JOptionPane.showMessageDialog(nezet, "Kérlek, add meg a neved!");
+            
+        return;
+       }
+       nezet.getTxtjatekosnev().setEditable(false);
+       nezet.getBtnindit().setEnabled(false);
+       nezet.getjButton1().setEnabled(false);
+       
+       for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            gomb[i][j].setEnabled(true);
+        }
+       }
+       
+       model.mehet();
+       frissites();
+       
+       JOptionPane.showMessageDialog(nezet, "Játék elindult, hajrá " + jatekos + "!"); 
     }
 
     private void kattint(int sorok, int oszlopok) {
@@ -73,6 +90,12 @@ public class LightOnJavaController {
             String player = nezet.getTxtjatekosnev().getText();
             nezet.getTxtjateknyertes().setText(player);
             JOptionPane.showMessageDialog(nezet, "Grat" +  player + ", nyertél");
+            nezet.getjButton1().setEnabled(true);
+             for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    gomb[i][j].setEnabled(false);
+                }
+            }
         }
     }
     
@@ -97,4 +120,26 @@ public class LightOnJavaController {
             }
         }
     }
+
+   private void ujraindit() {
+    try {
+        model.mehet(); 
+        nezet.getTxtjatekosnev().setText("");
+        nezet.getTxtjatekosnev().setEditable(true);
+        nezet.getBtnindit().setEnabled(true);
+        nezet.getjButton1().setEnabled(false);
+        nezet.getTxtjateknyertes().setText("");
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                gomb[i][j].setEnabled(false);
+                gomb[i][j].setBackground(Color.DARK_GRAY);
+            }
+        }
+        JOptionPane.showMessageDialog(nezet, "Új játék indult!");
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(nezet, "Hiba az új játék indításakor: " + e.getMessage());
+        }
+    }
+
 }

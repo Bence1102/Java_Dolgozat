@@ -21,7 +21,7 @@ public class LightOnJatekModell {
         jatekter[sorok][oszlopok] =! jatekter[sorok][oszlopok];
     }
     
-    private boolean getErtek(int sorok,int oszlopok){
+    public boolean getErtek(int sorok,int oszlopok){
         
         return jatekter[sorok][oszlopok];   
     }

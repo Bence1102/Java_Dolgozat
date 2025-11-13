@@ -27,7 +27,7 @@ public class LightOnJavaController {
         nezet.getBtnindit().addActionListener(e->newGame());
         
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < 3; j++) {
                 int sorok = i;
                 int oszlopok = j;
                 
@@ -52,9 +52,18 @@ public class LightOnJavaController {
     }
 
     private void newGame() {
-      model.mehet();
-      nezet.getTxtjateknyertes();
-      frissites();
+      try {
+            model.mehet();
+            nezet.getTxtjatekosnev().setText("");
+            nezet.getTxtjateknyertes();
+            nezet.getTxtjatekosnev().setEditable(true);
+            nezet.getBtnindit().setEnabled(true);
+            frissites();
+            JOptionPane.showConfirmDialog(nezet, "Új játék indult");
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(nezet, "Hiba az új játék indításakor: " + e.getMessage());
+      }
+      
     }
 
     private void kattint(int sorok, int oszlopok) {

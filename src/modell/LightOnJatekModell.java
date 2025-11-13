@@ -42,4 +42,11 @@ public class LightOnJatekModell {
         }
         return true;
     }
+    
+    public void ujgomb(){
+        jatekter = new boolean[3][3];
+        int sorok =(int) (Math.random()*3);
+        int oszlopok =(int) (Math.random()*3);
+        jatekter[sorok][oszlopok]=true;
+    }
 }

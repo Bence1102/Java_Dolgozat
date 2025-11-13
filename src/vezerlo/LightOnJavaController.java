@@ -74,10 +74,11 @@ public class LightOnJavaController {
        for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             gomb[i][j].setEnabled(true);
+            gomb[i][j].setBackground(Color.DARK_GRAY);
         }
        }
        
-       model.mehet();
+       model.ujgomb();
        frissites();
        
        JOptionPane.showMessageDialog(nezet, "Játék elindult, hajrá " + jatekos + "!"); 
@@ -123,7 +124,8 @@ public class LightOnJavaController {
 
    private void ujraindit() {
     try {
-        model.mehet(); 
+        model.mehet();
+        model.ujgomb();
         nezet.getTxtjatekosnev().setText("");
         nezet.getTxtjatekosnev().setEditable(true);
         nezet.getBtnindit().setEnabled(true);
